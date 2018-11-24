@@ -109,24 +109,21 @@ module top(
 
     reg hsync_prev = 0;
     reg vsync_prev = 0;
+    reg hsync_pulse = 0;
+    reg vsync_pulse = 0;
 
     always @(posedge pixclk) begin
         hsync_prev <= hsync;
         vsync_prev <= vsync;
+        hsync_pulse <= hsync & ~hsync_prev;
+        vsync_pulse <= vsync & ~vsync_prev;
 
-        if (vsync && !vsync_prev) begin
-            ypos <= frame;
-            frame <= frame + 1;
-        end
-        else if (hsync && !hsync_prev) begin
-            xpos <= frame;
-            ypos <= ypos + 1;
-        end
-        else if (data_en)
-            xpos <= xpos + 1;
+        frame <= frame + vsync_pulse;
+        xpos <= hsync_pulse ? 0 : xpos + data_en;
+        ypos <= vsync_pulse ? 0 : ypos + hsync_pulse;
 
-        vid_hs <= hsync;
-        vid_vs <= vsync;
+        vid_hs <= hsync_prev;
+        vid_vs <= vsync_prev;
         vid_de <= data_en;
 
         vid_r[7:4] <= ypos[7:4];
