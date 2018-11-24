@@ -1,3 +1,4 @@
+// Normal standard 720p at 60hz
 // 1280x720 74.25MHz 60Hz, +sync (HDMI modes 4,69)
 `define h_fp        110
 `define h_sync      40
@@ -9,6 +10,7 @@
 `define v_active    720
 
 // 1920x1080 74.25MHz 30Hz, +sync (HDMI modes 34,74)
+// This has a lower vertical refresh rate than some monitors will tolerate
 /*
 `define h_fp        88
 `define h_sync      44
