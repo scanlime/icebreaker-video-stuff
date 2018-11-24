@@ -119,8 +119,8 @@ module top(
         vsync_pulse <= vsync & ~vsync_prev;
 
         frame <= frame + vsync_pulse;
-        xpos <= hsync_pulse ? 0 : xpos + data_en;
-        ypos <= vsync_pulse ? 0 : ypos + hsync_pulse;
+        xpos <= hsync_pulse ? frame : xpos + data_en;
+        ypos <= vsync_pulse ? frame : ypos + hsync_pulse;
 
         vid_hs <= hsync_prev;
         vid_vs <= vsync_prev;
