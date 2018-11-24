@@ -1,6 +1,3 @@
-// Experiment at higher-speed video on UP5k.
-// Can we has 1080p at 30hz?
-
 module top(
     input CLK,
 
@@ -97,7 +94,7 @@ module top(
     );
 
     ////////////////////////////
-    // output
+    // output & test pattern
 
     reg [7:4] vid_r;
     reg [7:4] vid_g;
