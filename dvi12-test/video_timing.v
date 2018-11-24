@@ -73,7 +73,7 @@ module video_timing (
     always @(posedge clk) begin
         if (h_rollover) begin
             if (v_ctr[`v_ctr_bits]) begin
-                v_state <= v_state_next;            
+                v_state <= v_state_next;
                 v_ctr <=
                     v_state_next[`state_fp] ? `v_fp - 2 :
                     v_state_next[`state_sync] ? `v_sync - 2 :
