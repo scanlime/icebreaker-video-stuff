@@ -65,7 +65,7 @@ module video_timing (
     reg h_rollover;
     always @(posedge clk) begin
         h_state_prev <= h_state;
-        h_rollover <= h_state[`state_fp] & h_state_prev[`state_active];
+        h_rollover <= h_state[`state_sync] & h_state_prev[`state_fp];
     end
 
     reg [`v_ctr_bits:0] v_ctr = 0;
