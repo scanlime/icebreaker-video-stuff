@@ -1,8 +1,8 @@
 PROJ = dvi12-test
 
-PCF = icebreaker.pcf
+PCF = ../common/icebreaker.pcf
 TOP_SRC = top.v
-EXTRA_SRC = video_timing.v
+EXTRA_SRC = ../common/video_timing.v
 
 IVERILOG_LIB=$(HOME)/.apio/packages/toolchain-iverilog/lib/ivl
 IVERILOG_CELLS=$(HOME)/.apio/packages/toolchain-iverilog/vlib/cells_sim.v
